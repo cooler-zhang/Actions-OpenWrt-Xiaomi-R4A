@@ -22,5 +22,11 @@ sed -i "s/OpenWrt /cooler-r4a build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" p
 # 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
+# 修改默认wifi区域
+sed -i 's/country=US/country=CN/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 # 修改默认wifi名称ssid为Cooler_R4A
 sed -i 's/ssid=OpenWrt/ssid=Cooler_R4A/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 修改默认加密
+sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
